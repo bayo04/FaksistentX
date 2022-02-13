@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaksistentX.Shared.Views.CourseTemplates.CreateOrEditPage"
+             xmlns:dxe="http://schemas.devexpress.com/xamarin/2014/forms/editors">
+    <ContentPage.Content>
+        <StackLayout Padding="10,20">
+            <dxe:ComboBoxEdit LabelText="Course" IsFilterEnabled="True" ItemsSource="{Binding Courses}" ValueMember="Id" DisplayMember="Name" 
+                              SelectedValue="{Binding CourseId}" />
+            <dxe:TextEdit LabelText="Name" Text="{Binding Name, Mode=TwoWay}" />
+            <StackLayout Orientation="Horizontal" Margin="10">
+                <dxe:CheckEdit IsChecked="{Binding IsPublic, Mode=TwoWay}" Scale="1.25" />
+                <Label Text="Is public" VerticalTextAlignment="Center" FontSize="16" />
+            </StackLayout>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Save and return" Command="{Binding SaveCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Save and continue on partitions" Command="{Binding SaveAndContinueCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

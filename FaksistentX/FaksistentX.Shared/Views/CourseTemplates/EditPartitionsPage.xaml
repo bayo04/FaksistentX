@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaksistentX.Shared.Views.CourseTemplates.EditPartitionsPage"
+             xmlns:dxcv="http://schemas.devexpress.com/xamarin/2014/forms/collectionview"
+             xmlns:dxe="http://schemas.devexpress.com/xamarin/2014/forms/editors"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentPage.Resources>
+        <Style TargetType="dxcv:SwipeItem">
+            <Setter Property="FontColor" Value="White"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        <Style x:Key="SeparatorStyle" TargetType="BoxView">
+            <Setter Property="BackgroundColor" Value="DarkGray"/>
+            <Setter Property="HeightRequest" Value="1"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <dxcv:DXCollectionView ItemsSource="{Binding Partitions}" x:Name="PartitionsCollection">
+                <dxcv:DXCollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <dxcv:SwipeContainer>
+                            <dxcv:SwipeContainer.ItemView>
+                                <StackLayout Padding="10">
+
+                                    <xct:Expander>
+                                        <xct:Expander.Header>
+                                            <StackLayout Padding="0,0,50,0">
+                                                <dxe:TextEdit LabelText="Name" Text="{Binding Name, Mode=TwoWay}" />
+                                            </StackLayout>
+                                        </xct:Expander.Header>
+
+                                        <StackLayout>
+                                            <dxe:TextEdit LabelText="Code" Text="{Binding Code, Mode=TwoWay}" />
+
+                                            <dxe:NumericEdit LabelText="Total attendances" Value="{Binding TotalAttendances, Mode=TwoWay}" />
+                                            <dxe:NumericEdit LabelText="Allowed absences" Value="{Binding AllowedAbsences, Mode=TwoWay}" />
+                                            <dxe:NumericEdit LabelText="Allowed absences with stimulation" Value="{Binding AllowedAbsencesWithStimulation, Mode=TwoWay}" />
+                                        </StackLayout>
+                                    
+                                    </xct:Expander>
+
+                                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                                </StackLayout>
+                            </dxcv:SwipeContainer.ItemView>
+
+                            <dxcv:SwipeContainer.EndSwipeItems>
+                                <dxcv:SwipeItem Caption="Remove"
+                                        BackgroundColor="Red"
+                                        Command="{Binding Source={x:Reference PartitionsCollection}, Path=RemoveCommand}" CommandParameter="{Binding .}"/>
+                            </dxcv:SwipeContainer.EndSwipeItems>
+                        </dxcv:SwipeContainer>
+                    </DataTemplate>
+                </dxcv:DXCollectionView.ItemTemplate>
+            </dxcv:DXCollectionView>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Add new" Command="{Binding AddNewCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Save and continue on tests" Command="{Binding SaveAndContinueCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaksistentX.Shared.Views.UserSemesters.AddUserSemesterPage"
+             xmlns:dxe="http://schemas.devexpress.com/xamarin/2014/forms/editors">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <dxe:TextEdit LabelText="Semester name" Text="{Binding SemesterName}"/>
+            <dxe:NumericEdit LabelText="Semester number" Value="{Binding SemesterNo}" MinValue="1" MaxValue="{Binding MaxSemesterNoValue}" IsUpDownIconVisible="True"/>
+            <dxe:DateEdit LabelText="Start date" Date="{Binding StartDate}"/>
+            <dxe:DateEdit LabelText="End date" Date="{Binding EndDate}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Save and return" Command="{Binding SaveCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Save and continue on select courses" Command="{Binding SaveAndContinueCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

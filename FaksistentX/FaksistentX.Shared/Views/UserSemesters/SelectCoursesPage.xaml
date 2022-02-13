@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaksistentX.Shared.Views.UserSemesters.SelectCoursesPage"
+             xmlns:dxcv="http://schemas.devexpress.com/xamarin/2014/forms/collectionview">
+    <ContentPage.Resources>
+        <Style TargetType="dxcv:SwipeItem">
+            <Setter Property="FontColor" Value="White"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        <Style x:Key="SeparatorStyle" TargetType="BoxView">
+            <Setter Property="BackgroundColor" Value="DarkGray"/>
+            <Setter Property="HeightRequest" Value="1"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding SaveCommand}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <dxcv:DXCollectionView ItemsSource="{Binding Courses}" x:Name="CourseCollectionView">
+                <dxcv:DXCollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <dxcv:SwipeContainer>
+                            <dxcv:SwipeContainer.ItemView>
+                                <StackLayout Margin="0" Spacing="0" BackgroundColor="{Binding Color}">
+                                    <Label Margin="20" Text="{Binding Name}"/>
+                                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                                </StackLayout>
+                            </dxcv:SwipeContainer.ItemView>
+
+                            <dxcv:SwipeContainer.StartSwipeItems>
+                                <dxcv:SwipeItem Caption="Add"
+                                        BackgroundColor="Green"
+                                        Invoked="SwipeItem_Invoked"/>
+                            </dxcv:SwipeContainer.StartSwipeItems>
+
+                            <dxcv:SwipeContainer.EndSwipeItems>
+                                <dxcv:SwipeItem Caption="Remove"
+                                        BackgroundColor="Red"
+                                        Image="deletetask"
+                                        Invoked="SwipeItem_Invoked_1"/>
+                            </dxcv:SwipeContainer.EndSwipeItems>
+                        </dxcv:SwipeContainer>
+                    </DataTemplate>
+                </dxcv:DXCollectionView.ItemTemplate>
+            </dxcv:DXCollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

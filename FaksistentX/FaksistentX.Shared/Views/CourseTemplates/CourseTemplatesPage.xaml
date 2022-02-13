@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaksistentX.Shared.Views.CourseTemplates.CourseTemplatesPage"
+             xmlns:dxcv="http://schemas.devexpress.com/xamarin/2014/forms/collectionview"
+             xmlns:local="clr-namespace:FaksistentX.Shared.ViewModels.CourseTemplates" 
+             xmlns:dxn="http://schemas.devexpress.com/xamarin/2014/forms/navigation">
+    <ContentPage.Resources>
+        <Style TargetType="dxcv:SwipeItem">
+            <Setter Property="FontColor" Value="White"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        <Style x:Key="SeparatorStyle" TargetType="BoxView">
+            <Setter Property="BackgroundColor" Value="DarkGray"/>
+            <Setter Property="HeightRequest" Value="1"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add new" Command="{Binding AddNewCommand}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <dxn:TabView HeaderPanelPosition="Bottom" SwipeEnabled="False">
+            <dxn:TabViewItem HeaderText="All templates">
+                <dxn:TabViewItem.Content>
+                    <StackLayout>
+                        <dxcv:DXCollectionView ItemsSource="{Binding Templates}">
+                            <dxcv:DXCollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <dxcv:SwipeContainer>
+                                        <dxcv:SwipeContainer.ItemView>
+                                            <StackLayout Spacing="0">
+                                                <StackLayout Margin="10,20">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                    </Grid>
+                                                    <Label Grid.Column="1" FontSize="18" Text="{Binding Name}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                                    <Label Grid.Column="2" FontSize="14" Text="{Binding Course.Name}" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                                </StackLayout>
+                                                <BoxView Style="{StaticResource SeparatorStyle}"/>
+                                            </StackLayout>
+                                        </dxcv:SwipeContainer.ItemView>
+
+                                        <dxcv:SwipeContainer.StartSwipeItems>
+                                            <dxcv:SwipeItem Caption="Use"
+                                                BackgroundColor="Green"/>
+                                            <dxcv:SwipeItem Caption="Edit"
+                                                BackgroundColor="Blue"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CourseTemplatesViewModel}}, Path=EditCommand}"/>
+                                        </dxcv:SwipeContainer.StartSwipeItems>
+                                    </dxcv:SwipeContainer>
+                                </DataTemplate>
+                            </dxcv:DXCollectionView.ItemTemplate>
+                        </dxcv:DXCollectionView>
+                    </StackLayout>
+                </dxn:TabViewItem.Content>
+            </dxn:TabViewItem>
+            
+            <dxn:TabViewItem HeaderText="My templates">
+                <dxn:TabViewItem.Content>
+                    <StackLayout>
+                        <dxcv:DXCollectionView ItemsSource="{Binding MyTemplates}">
+                            <dxcv:DXCollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <dxcv:SwipeContainer>
+                                        <dxcv:SwipeContainer.ItemView>
+                                            <StackLayout Spacing="0">
+                                                <StackLayout Margin="10,20">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                    </Grid>
+                                                    <Label Grid.Column="1" FontSize="18" Text="{Binding Name}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                                    <Label Grid.Column="2" FontSize="14" Text="{Binding Course.Name}" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                                </StackLayout>
+                                                <BoxView Style="{StaticResource SeparatorStyle}"/>
+                                            </StackLayout>
+                                        </dxcv:SwipeContainer.ItemView>
+
+                                        <dxcv:SwipeContainer.StartSwipeItems>
+                                            <dxcv:SwipeItem Caption="Edit"
+                                        BackgroundColor="Blue"/>
+                                        </dxcv:SwipeContainer.StartSwipeItems>
+                                    </dxcv:SwipeContainer>
+                                </DataTemplate>
+                            </dxcv:DXCollectionView.ItemTemplate>
+                        </dxcv:DXCollectionView>
+                    </StackLayout>
+                </dxn:TabViewItem.Content>
+            </dxn:TabViewItem>
+        </dxn:TabView>
+    </ContentPage.Content>
+</ContentPage>
