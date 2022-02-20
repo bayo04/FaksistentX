@@ -52,6 +52,18 @@ namespace FaksistentX.Services.Courses.CourseTemplates
             return result.Result;
         }
 
+        public async Task<CourseTemplateDto> CreateRestrictionsAsync(CreateCourseRestrictionsDto input)
+        {
+            foreach(var item in input.Restrictions)
+            {
+                item.CourseTestIds = item.CourseTestIdsHelper.Select(x => x.Id).ToList();
+            }
+
+            var result = await PostAsync<CourseTemplateDto>("services/app/CourseTemplates/CreateRestrictions", input);
+
+            return result.Result;
+        }
+
         public async Task<CourseTemplateDto> GetAsync(string id)
         {
             var result = await GetAsync<CourseTemplateDto>("services/app/CourseTemplates/Get", new EntityDto(id));

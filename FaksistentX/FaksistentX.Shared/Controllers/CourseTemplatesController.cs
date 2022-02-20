@@ -37,5 +37,10 @@ namespace FaksistentX.Shared.Controllers
         {
             await ChangeView(new EntityDto(Id));
         }
+
+        public async Task EditCourseRestrictionsPage(string Id)
+        {
+            await ChangeView(new EntityDto(Id));
+        }
     }
 }

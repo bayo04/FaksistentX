@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace FaksistentX.Services.Courses.CourseTemplates.Dtos
 {
-    public class CourseTestDto
+    public class CourseRestrictionDto
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-
-        public string Code { get; set; }
-
-        public decimal TotalPoints { get; set; }
-
         public decimal PointsForPass { get; set; }
 
         public decimal PointsForSignature { get; set; }
+
+        public string CourseTemplateId { get; set; }
+
+        public List<CourseRestrictionTestDto> Tests { get; set; }
     }
 }

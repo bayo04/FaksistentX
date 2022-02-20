@@ -213,11 +213,15 @@
     <Compile Include="Courses\CourseAppService.cs" />
     <Compile Include="Courses\CourseTemplates\CourseTemplateAppService.cs" />
     <Compile Include="Courses\CourseTemplates\Dtos\CoursePartitionDto.cs" />
+    <Compile Include="Courses\CourseTemplates\Dtos\CourseRestrictionDto.cs" />
+    <Compile Include="Courses\CourseTemplates\Dtos\CourseRestrictionTestDto.cs" />
     <Compile Include="Courses\CourseTemplates\Dtos\CourseTemplateDto.cs" />
     <Compile Include="Courses\CourseTemplates\Dtos\CourseTemplateRequestDto.cs" />
     <Compile Include="Courses\CourseTemplates\Dtos\CourseTestDto.cs" />
     <Compile Include="Courses\CourseTemplates\Dtos\CreateCoursePartitionDto.cs" />
     <Compile Include="Courses\CourseTemplates\Dtos\CreateCoursePartitionsDto.cs" />
+    <Compile Include="Courses\CourseTemplates\Dtos\CreateCourseRestrictionDto.cs" />
+    <Compile Include="Courses\CourseTemplates\Dtos\CreateCourseRestrictionsDto.cs" />
     <Compile Include="Courses\CourseTemplates\Dtos\CreateCourseTemplateDto.cs" />
     <Compile Include="Courses\CourseTemplates\Dtos\CreateCourseTestDto.cs" />
     <Compile Include="Courses\CourseTemplates\Dtos\CreateCourseTestsDto.cs" />

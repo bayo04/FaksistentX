@@ -1,5 +1,6 @@
 ﻿using FaksistentX.Services.Courses.CourseTemplates;
 using FaksistentX.Services.Courses.CourseTemplates.Dtos;
+using FaxistentX.Core.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,6 +36,8 @@ namespace FaksistentX.Shared.ViewModels.CourseTemplates
         public async void OnAppearing()
         {
             var template = await _courseTemplateAppService.GetAsync(Id);
+            Tests.Clear();
+
             foreach (var partiton in template.CourseTests)
             {
                 Tests.Add(new CreateCourseTestDto
@@ -64,6 +67,8 @@ namespace FaksistentX.Shared.ViewModels.CourseTemplates
                 Tests = Tests.ToList(),
                 CourseTemplateId = Id
             });
+
+            InvokeControllerMethod("CourseTemplates", "EditCourseRestrictions", new EntityDto(Id));
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FaksistentX.Shared.Views.CourseTemplates.EditTestsPage"
+             x:Class="FaksistentX.Shared.Views.CourseTemplates.EditCourseRestrictionsPage"
              xmlns:dxcv="http://schemas.devexpress.com/xamarin/2014/forms/collectionview"
              xmlns:dxe="http://schemas.devexpress.com/xamarin/2014/forms/editors"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:local="clr-namespace:FaksistentX.Shared.ViewModels.CourseTemplates"
+             x:Name="Page">
     <ContentPage.Resources>
         <Style TargetType="dxcv:SwipeItem">
             <Setter Property="FontColor" Value="White"/>
@@ -18,7 +20,7 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <dxcv:DXCollectionView ItemsSource="{Binding Tests}" x:Name="TestsCollection">
+            <dxcv:DXCollectionView ItemsSource="{Binding Restrictions}" x:Name="RestrictionsCollection">
                 <dxcv:DXCollectionView.ItemTemplate>
                     <DataTemplate>
                         <dxcv:SwipeContainer>
@@ -27,15 +29,24 @@
 
                                     <xct:Expander>
                                         <xct:Expander.Header>
-                                            <StackLayout Padding="0,0,50,0">
-                                                <dxe:TextEdit LabelText="Name" Text="{Binding Name, Mode=TwoWay}" />
+                                            <StackLayout HeightRequest="300" Padding="10,10,10,40">
+                                                <dxcv:DXCollectionView ItemsSource="{Binding CourseTestIdsHelper}" x:Name="{Binding CollectionName}">
+                                                    <dxcv:DXCollectionView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <dxe:ComboBoxEdit LabelText="Test" IsFilterEnabled="True" 
+                                                                              ItemsSource="{Binding BindingContext.CourseTests, Source={x:Reference Page}}"
+                                                                              ValueMember="Id" DisplayMember="Name"
+                                                                              SelectedValue="{Binding Id}" />
+                                                        </DataTemplate>
+                                                    </dxcv:DXCollectionView.ItemTemplate>
+                                                </dxcv:DXCollectionView>
+                                                <dxe:SimpleButton VerticalOptions="Center" Text="Add new" 
+                                                                  Command="{Binding BindingContext.AddNewTestCommand, Source={x:Reference Page} }" 
+                                                                  CommandParameter="{Binding .}"/>
                                             </StackLayout>
                                         </xct:Expander.Header>
 
                                         <StackLayout>
-                                            <dxe:TextEdit LabelText="Code" Text="{Binding Code, Mode=TwoWay}" />
-
-                                            <dxe:NumericEdit LabelText="Total points" Value="{Binding TotalPoints, Mode=TwoWay}" />
                                             <dxe:NumericEdit LabelText="Points for pass" Value="{Binding PointsForPass, Mode=TwoWay}" />
                                             <dxe:NumericEdit LabelText="Points for signature" Value="{Binding PointsForSignature, Mode=TwoWay}" />
                                         </StackLayout>
@@ -49,7 +60,7 @@
                             <dxcv:SwipeContainer.EndSwipeItems>
                                 <dxcv:SwipeItem Caption="Remove"
                                         BackgroundColor="Red"
-                                        Command="{Binding Source={x:Reference TestsCollection}, Path=RemoveCommand}" CommandParameter="{Binding .}"/>
+                                        Command="{Binding Source={x:Reference RestrictionsCollection}, Path=RemoveCommand}" CommandParameter="{Binding .}"/>
                             </dxcv:SwipeContainer.EndSwipeItems>
                         </dxcv:SwipeContainer>
                     </DataTemplate>

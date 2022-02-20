@@ -36,6 +36,8 @@ namespace FaksistentX.Shared.ViewModels.CourseTemplates
         public async void OnAppearing()
         {
             var template = await _courseTemplateAppService.GetAsync(Id);
+            Partitions.Clear();
+
             foreach (var partiton in template.CoursePartitions)
             {
                 Partitions.Add(new CreateCoursePartitionDto

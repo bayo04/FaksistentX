@@ -22,5 +22,7 @@ namespace FaksistentX.Services.Courses.CourseTemplates.Dtos
         public List<CoursePartitionDto> CoursePartitions { get; set; }
 
         public List<CourseTestDto> CourseTests { get; set; }
+
+        public List<CourseRestrictionDto> CourseRestrictions { get; set; }
     }
 }

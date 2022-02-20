@@ -8,7 +8,7 @@ namespace FaksistentX.Services
 {
     public class AppConsts
     {
-        public const string ApiUrl = "https://192.168.2.8:45455/api/";
+        public const string ApiUrl = "https://192.168.2.11:45455/api/";
         
         public const string AppName = "Faksistent";
     }
