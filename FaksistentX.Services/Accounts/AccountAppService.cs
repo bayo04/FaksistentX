@@ -1,6 +1,8 @@
 ﻿using FaksistentX.Services.Accounts.Dtos;
 using FaksistentX.Services.Base;
 using FaksistentX.Services.Tenants;
+using FaxistentX.Core;
+using FaxistentX.Core.UserSemesters;
 using FaxistentX.Services.Account;
 using System;
 using System.Collections.Generic;
@@ -38,6 +40,12 @@ namespace FaksistentX.Services.Accounts
                 return true;
             }
             return false;
+        }
+
+        public async Task<bool> Logout()
+        {
+            await SqliteDbContext.Instance.GetConnection().Table<UserSemester>().DeleteAsync(x => true);
+            return SecureStorage.Remove("accessToken");
         }
 
         public async Task<bool> Register(RegisterInput input)

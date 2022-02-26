@@ -24,5 +24,9 @@ namespace FaksistentX.Services.Courses.CourseTemplates.Dtos
         public List<CourseTestDto> CourseTests { get; set; }
 
         public List<CourseRestrictionDto> CourseRestrictions { get; set; }
+
+        public bool IsUsed { get; set; }
+
+        public string BackgroundColor => IsUsed ? "GreenYellow" : "white";
     }
 }

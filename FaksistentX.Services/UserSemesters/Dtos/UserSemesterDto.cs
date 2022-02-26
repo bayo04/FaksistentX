@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FaksistentX.Services.UserSemesters.SemesterCourses.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace FaksistentX.Services.UserSemesters.Dtos
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
+
+        public List<SemesterCourseDto> SemesterCourses { get; set; }
 
         public string Color => IsSelected ? "GreenYellow" : "White";
     }

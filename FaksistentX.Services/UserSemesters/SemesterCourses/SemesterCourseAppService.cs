@@ -1,5 +1,6 @@
 ﻿using FaksistentX.Services.Base;
 using FaksistentX.Services.UserSemesters.SemesterCourses.Dtos;
+using FaxistentX.Core.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,11 @@ namespace FaksistentX.Services.UserSemesters.SemesterCourses
             var result = await GetListAsync<SemesterCourseDto>($"services/app/SemesterCourse/GetAll", input);
 
             return result.Result.Items;
+        }
+
+        public async Task SetTemplate(SetTemplateDto input)
+        {
+            await PostAsync<Guid?>("services/app/SemesterCourse/SetTemplate", input);
         }
     }
 }

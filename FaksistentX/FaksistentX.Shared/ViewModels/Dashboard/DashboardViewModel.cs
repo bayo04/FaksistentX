@@ -29,14 +29,19 @@ namespace FaksistentX.Shared.ViewModels.Dashboard
         {
             IsBusy = true;
 
+            await _userSemesterAppService.GetAllAsync();
+
             var semester = await _userSemesterAppService.GetSelectedAsync();
 
-            var courses = await _semesterCourseAppService.GetAllAsync(new SemesterCourseRequestDto { UserSemesterId = semester.Id });
-
             Courses.Clear();
-            foreach (var course in courses)
+            if (semester != null)
             {
-                Courses.Add(course);
+                var courses = await _semesterCourseAppService.GetAllAsync(new SemesterCourseRequestDto { UserSemesterId = semester.Id });
+
+                foreach (var course in courses)
+                {
+                    Courses.Add(course);
+                }
             }
 
             IsBusy = false;

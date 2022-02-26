@@ -17,7 +17,7 @@ namespace FaksistentX.Services.UserSemesters
         {
             var result = await GetListAsync<UserSemesterDto>("services/app/UserSemester/GetAll");
 
-            WriteToDb(result.Result.Items);
+            await WriteToDb(result.Result.Items);
 
             return result.Result.Items;
         }
@@ -77,24 +77,42 @@ namespace FaksistentX.Services.UserSemesters
         {
             var result = await PostAsync<UserSemesterDto>("services/app/UserSemester/SetIsSelected", new EntityDto(id));
 
-            GetAllAsync();
+            await GetAllAsync();
 
             return result.Success;
         }
 
         public async Task<UserSemesterDto> GetSelectedAsync()
         {
-            var semester = await SqliteDbContext.Instance.GetConnection().Table<UserSemester>().FirstOrDefaultAsync(x => x.IsSelected);
-
-            return new UserSemesterDto
+            try
             {
-                Id = semester.Id,
-                EndDate = semester.EndDate,
-                IsSelected = semester.IsSelected,
-                Name = semester.Name,
-                SemesterNo = semester.SemesterNo,
-                StartDate = semester.StartDate
-            };
+                var table = SqliteDbContext.Instance.GetConnection().Table<UserSemester>();
+                if ((await SqliteDbContext.Instance.GetConnection().Table<UserSemester>().ToListAsync()).Any()){
+
+                    var semester = await SqliteDbContext.Instance.GetConnection().Table<UserSemester>().FirstOrDefaultAsync(x => x.IsSelected);
+
+                    return new UserSemesterDto
+                    {
+                        Id = semester.Id,
+                        EndDate = semester.EndDate,
+                        IsSelected = semester.IsSelected,
+                        Name = semester.Name,
+                        SemesterNo = semester.SemesterNo,
+                        StartDate = semester.StartDate
+                    };
+                }
+                else { return null; }
+            }catch(Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<UserSemesterDto> GetSelectedFromApiAsync()
+        {
+            var result = await GetAsync<UserSemesterDto>("services/app/UserSemester/GetSelected");
+
+            return result.Result;
         }
     }
 }

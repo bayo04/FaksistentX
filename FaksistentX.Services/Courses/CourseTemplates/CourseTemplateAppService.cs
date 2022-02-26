@@ -38,6 +38,13 @@ namespace FaksistentX.Services.Courses.CourseTemplates
             }
         }
 
+        public async Task<CourseTemplateDto> CreatePrivateAsync(string id)
+        {
+            var result = await PostAsync<CourseTemplateDto>("services/app/CourseTemplates/CreatePrivate", new EntityDto(id));
+
+            return result.Result;
+        }
+
         public async Task<CourseTemplateDto> CreatePartitionsAsync(CreateCoursePartitionsDto input)
         {
             var result = await PostAsync<CourseTemplateDto>("services/app/CourseTemplates/CreatePartitions", input);
@@ -54,7 +61,7 @@ namespace FaksistentX.Services.Courses.CourseTemplates
 
         public async Task<CourseTemplateDto> CreateRestrictionsAsync(CreateCourseRestrictionsDto input)
         {
-            foreach(var item in input.Restrictions)
+            foreach (var item in input.Restrictions)
             {
                 item.CourseTestIds = item.CourseTestIdsHelper.Select(x => x.Id).ToList();
             }

@@ -1,5 +1,4 @@
-﻿using FaksistentX.Services.Courses.Dtos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace FaksistentX.Services.UserSemesters.SemesterCourses.Dtos
 {
-    public class SemesterCourseDto
+    public class SetTemplateDto
     {
-        public string UserSemesterId { get; set; }
-
-        public string CourseId { get; set; }
-
         public string CourseTemplateId { get; set; }
 
-        public CourseDto Course { get; set; }
+        public string UserSemesterId { get; set; }
     }
 }

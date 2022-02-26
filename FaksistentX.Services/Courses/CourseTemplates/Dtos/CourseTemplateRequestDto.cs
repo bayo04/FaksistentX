@@ -9,5 +9,7 @@ namespace FaksistentX.Services.Courses.CourseTemplates.Dtos
     public class CourseTemplateRequestDto
     {
         public bool? IsPublic { get; set; }
+
+        public bool? IsMine { get; set; }
     }
 }

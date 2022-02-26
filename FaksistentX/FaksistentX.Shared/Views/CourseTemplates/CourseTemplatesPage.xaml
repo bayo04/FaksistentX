@@ -47,10 +47,8 @@
 
                                         <dxcv:SwipeContainer.StartSwipeItems>
                                             <dxcv:SwipeItem Caption="Use"
-                                                BackgroundColor="Green"/>
-                                            <dxcv:SwipeItem Caption="Edit"
-                                                BackgroundColor="Blue"
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CourseTemplatesViewModel}}, Path=EditCommand}"/>
+                                                BackgroundColor="Green"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CourseTemplatesViewModel}}, Path=UseCommand}"/>
                                         </dxcv:SwipeContainer.StartSwipeItems>
                                     </dxcv:SwipeContainer>
                                 </DataTemplate>
@@ -68,7 +66,7 @@
                                 <DataTemplate>
                                     <dxcv:SwipeContainer>
                                         <dxcv:SwipeContainer.ItemView>
-                                            <StackLayout Spacing="0">
+                                            <StackLayout Spacing="0" BackgroundColor="{Binding BackgroundColor}">
                                                 <StackLayout Margin="10,20">
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -85,7 +83,11 @@
 
                                         <dxcv:SwipeContainer.StartSwipeItems>
                                             <dxcv:SwipeItem Caption="Edit"
-                                        BackgroundColor="Blue"/>
+                                                BackgroundColor="Blue"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CourseTemplatesViewModel}}, Path=EditCommand}"/>
+                                            <dxcv:SwipeItem Caption="Set"
+                                                BackgroundColor="Green"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CourseTemplatesViewModel}}, Path=SetCommand}"/>
                                         </dxcv:SwipeContainer.StartSwipeItems>
                                     </dxcv:SwipeContainer>
                                 </DataTemplate>
