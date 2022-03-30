@@ -3,10 +3,12 @@ using FaksistentX.Services.Courses.Dtos;
 using FaksistentX.Services.UserSemesters;
 using FaksistentX.Services.UserSemesters.SemesterCourses;
 using FaksistentX.Services.UserSemesters.SemesterCourses.Dtos;
+using FaxistentX.Core.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace FaksistentX.Shared.ViewModels.Dashboard
 {
@@ -17,12 +19,16 @@ namespace FaksistentX.Shared.ViewModels.Dashboard
         private SemesterCourseAppService _semesterCourseAppService;
         private UserSemesterAppService _userSemesterAppService;
 
+        public Command<SemesterCourseDto> CourseDetailsCommand { get; set; }
+
         public DashboardViewModel()
         {
             Courses = new ObservableCollection<SemesterCourseDto>();
 
             _userSemesterAppService = new UserSemesterAppService();
             _semesterCourseAppService = new SemesterCourseAppService();
+
+            CourseDetailsCommand = new Command<SemesterCourseDto>(OnCourseDetailsCommand);
         }
 
         public async void OnAppearing()
@@ -45,6 +51,11 @@ namespace FaksistentX.Shared.ViewModels.Dashboard
             }
 
             IsBusy = false;
+        }
+
+        private void OnCourseDetailsCommand(SemesterCourseDto course)
+        {
+            InvokeControllerMethod("Dashboard", "CourseDetails", new EntityDto(course.Id));
         }
     }
 }

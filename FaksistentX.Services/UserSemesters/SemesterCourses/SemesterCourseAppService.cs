@@ -24,9 +24,21 @@ namespace FaksistentX.Services.UserSemesters.SemesterCourses
             return result.Result.Items;
         }
 
+        public async Task<SemesterCourseDto> GetAsync(string id)
+        {
+            var result = await GetAsync<SemesterCourseDto>("services/app/SemesterCourse/Get", new EntityDto(id));
+
+            return result.Result;
+        }
+
         public async Task SetTemplate(SetTemplateDto input)
         {
             await PostAsync<Guid?>("services/app/SemesterCourse/SetTemplate", input);
+        }
+
+        public async Task SetPoints(SetPointsDto input)
+        {
+            await PostAsync<Guid?>("services/app/SemesterCourse/SetPoints", input);
         }
     }
 }

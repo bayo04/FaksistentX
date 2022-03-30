@@ -235,7 +235,10 @@
     <Compile Include="UserSemesters\SemesterCourses\Dtos\CreateMultiSemesterCoursesDto.cs" />
     <Compile Include="UserSemesters\SemesterCourses\Dtos\CreateSemesterCourseDto.cs" />
     <Compile Include="UserSemesters\SemesterCourses\Dtos\SemesterCourseDto.cs" />
+    <Compile Include="UserSemesters\SemesterCourses\Dtos\SemesterCoursePartitionDto.cs" />
     <Compile Include="UserSemesters\SemesterCourses\Dtos\SemesterCourseRequestDto.cs" />
+    <Compile Include="UserSemesters\SemesterCourses\Dtos\SemesterCourseTestDto.cs" />
+    <Compile Include="UserSemesters\SemesterCourses\Dtos\SetPointsDto.cs" />
     <Compile Include="UserSemesters\SemesterCourses\Dtos\SetTemplateDto.cs" />
     <Compile Include="UserSemesters\SemesterCourses\SemesterCourseAppService.cs" />
     <Compile Include="UserSemesters\UserSemesterAppService.cs" />

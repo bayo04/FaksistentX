@@ -18,5 +18,9 @@ namespace FaksistentX.Services.Courses.CourseTemplates.Dtos
         public decimal PointsForPass { get; set; }
 
         public decimal PointsForSignature { get; set; }
+
+        public decimal MyPoints { get; set; }
+
+        public string PointsText => MyPoints.ToString() + " / " + TotalPoints.ToString();
     }
 }

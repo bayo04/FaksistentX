@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxcv="http://schemas.devexpress.com/xamarin/2014/forms/collectionview"
+             xmlns:dxn="http://schemas.devexpress.com/xamarin/2014/forms/navigation"
+             x:Class="FaksistentX.Shared.Views.Dashboard.EditLecturesPage"
+             x:Name="Page">
+    <ContentPage.Resources>
+        <Style TargetType="dxcv:SwipeItem">
+            <Setter Property="FontColor" Value="White"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        <Style x:Key="SeparatorStyle" TargetType="BoxView">
+            <Setter Property="BackgroundColor" Value="DarkGray"/>
+            <Setter Property="HeightRequest" Value="1"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <dxn:TabView HeaderPanelPosition="Bottom" SwipeEnabled="False" ItemsSource="{Binding Partitions}"
+                     x:Name="TabView">
+            <dxn:TabView.ItemHeaderTemplate>
+                <DataTemplate>
+                    <StackLayout Margin="10">
+                        <Label Text="{Binding Name}"
+                          HorizontalTextAlignment="Center"
+                          VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </DataTemplate>
+            </dxn:TabView.ItemHeaderTemplate>
+            <dxn:TabView.ItemTemplate>
+                <DataTemplate>
+                    <Label>asdf</Label>
+                    <!--<dxcv:DXCollectionView ItemsSource="{Binding CoursePartitions}" x:Name="PartitionsCollection">
+                        <dxcv:DXCollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <dxcv:SwipeContainer>
+                                    <dxcv:SwipeContainer.ItemView>
+                                        <StackLayout Padding="10">
+
+                                            <BoxView Style="{StaticResource SeparatorStyle}"/>
+                                        </StackLayout>
+                                    </dxcv:SwipeContainer.ItemView>
+
+                                    <dxcv:SwipeContainer.EndSwipeItems>
+                                        <dxcv:SwipeItem Caption="Remove"
+                                                BackgroundColor="Red"
+                                                Command="{Binding Source={x:Reference PartitionsCollection}, Path=RemoveCommand}" CommandParameter="{Binding .}"/>
+                                    </dxcv:SwipeContainer.EndSwipeItems>
+                                </dxcv:SwipeContainer>
+                            </DataTemplate>
+                        </dxcv:DXCollectionView.ItemTemplate>
+                    </dxcv:DXCollectionView>-->
+                </DataTemplate>
+            </dxn:TabView.ItemTemplate>
+        </dxn:TabView>
+    </ContentPage.Content>
+</ContentPage>

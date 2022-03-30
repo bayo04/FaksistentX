@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaksistentX.Shared.Views.Dashboard.CourseDetailsPage"
+             xmlns:dxe="http://schemas.devexpress.com/xamarin/2014/forms/editors"
+             xmlns:dxcv="http://schemas.devexpress.com/xamarin/2014/forms/collectionview">
+    <ContentPage.Resources>
+        <Style TargetType="dxcv:SwipeItem">
+            <Setter Property="FontColor" Value="White"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        <Style x:Key="SeparatorStyle" TargetType="BoxView">
+            <Setter Property="BackgroundColor" Value="DarkGray"/>
+            <Setter Property="HeightRequest" Value="1"/>
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BorderColor="#41B3A3" CornerRadius="10" BackgroundColor="#C38D9E" Margin="10">
+                <StackLayout Spacing="0" Margin="5">
+                    <dxcv:DXCollectionView ItemsSource="{Binding Tests}" x:Name="TestCollectionView">
+                        <dxcv:DXCollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Margin="0" Spacing="0" BackgroundColor="{Binding Color}">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Margin="20" Text="{Binding Name}" TextColor="Black"/>
+                                        <Label Margin="20" Text="{Binding PointsText}" TextColor="Black"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                                    
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" 
+                                                              CommandParameter="{Binding .}"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </DataTemplate>
+                        </dxcv:DXCollectionView.ItemTemplate>
+                    </dxcv:DXCollectionView>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
