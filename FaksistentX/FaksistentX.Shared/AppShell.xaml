@@ -5,8 +5,10 @@
        xmlns:dashboard="clr-namespace:FaksistentX.Shared.Views.Dashboard"
        xmlns:userSemesters="clr-namespace:FaksistentX.Shared.Views.UserSemesters"
        xmlns:courseTemplates="clr-namespace:FaksistentX.Shared.Views.CourseTemplates"
+       xmlns:viewmodels="clr-namespace:FaksistentX.Shared.ViewModels"
        Title="FaksistentX"
-       x:Class="FaksistentX.AppShell">
+       x:Class="FaksistentX.AppShell"
+       x:Name="Page">
 
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
@@ -14,6 +16,10 @@
         https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
     -->
 
+    <Shell.BindingContext>
+        <viewmodels:AppShellViewModel />
+    </Shell.BindingContext>
+    
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
@@ -90,7 +96,7 @@
     <FlyoutItem Title="Course templates" Icon="icon_about.png">
         <ShellContent ContentTemplate="{DataTemplate courseTemplates:CourseTemplatesPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Semesters (none selected)" Icon="icon_about.png">
+    <FlyoutItem Title="{Binding SemesterItem}" Icon="icon_about.png">
         <ShellContent ContentTemplate="{DataTemplate userSemesters:UserSemestersPage}" />
     </FlyoutItem>
 

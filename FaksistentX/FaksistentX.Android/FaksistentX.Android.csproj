@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DevExpress.XamarinForms.Charts">
+      <Version>21.2.5</Version>
+    </PackageReference>
     <PackageReference Include="DevExpress.XamarinForms.CollectionView">
       <Version>21.2.5</Version>
     </PackageReference>

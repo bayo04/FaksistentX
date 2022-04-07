@@ -1,5 +1,6 @@
 ﻿using FaksistentX.Services.UserSemesters;
 using FaksistentX.Services.UserSemesters.Dtos;
+using FaksistentX.Shared.Actions;
 using FaksistentX.Shared.Views.UserSemesters;
 using FaxistentX.Core.Base;
 using System;
@@ -14,12 +15,14 @@ namespace FaksistentX.Shared.ViewModels.UserSemesters
     public class UserSemestersViewModel : BaseViewModel
     {
         private readonly UserSemesterAppService _userSemesterAppService;
-        public List<UserSemesterDto> UserSemesters { get; set; }
+        public ObservableCollection<UserSemesterDto> UserSemesters { get; set; }
 
         public Command LoadUserSemestersCommand { get; set; }
         public Command AddSemesterCommand { get; set; }
 
         private UserSemestersPage _page;
+
+        private UserSemesterActions _userSemesterActions;
 
         public UserSemestersViewModel(UserSemestersPage page)
         {
@@ -29,7 +32,9 @@ namespace FaksistentX.Shared.ViewModels.UserSemesters
 
             _page = page;
 
-            UserSemesters = new List<UserSemesterDto>();
+            UserSemesters = new ObservableCollection<UserSemesterDto>();
+
+            _userSemesterActions = DependencyService.Get<UserSemesterActions>();
         }
 
         public async Task ExecuteLoadUserSemestersCommand()
@@ -54,6 +59,7 @@ namespace FaksistentX.Shared.ViewModels.UserSemesters
             {
                 UserSemesters.Add(semsester);
             }
+            _userSemesterActions.GetCurrentSemester();
             IsBusy = false;
         }
 

@@ -4,6 +4,8 @@ using FaksistentX.Services.Accounts;
 using FaksistentX.Services.Base;
 using FaksistentX.Services.Tenants;
 using FaksistentX.Services.Tenants.Dtos;
+using FaksistentX.Shared.Actions;
+using FaksistentX.Shared.Stores;
 using FaksistentX.Shared.Views;
 using FaksistentX.Shared.Views.Account;
 using System;
@@ -30,6 +32,9 @@ namespace FaksistentX.Shared.ViewModels
         private readonly AccountAppService _accountAppService;
 
         private readonly TenantAppService _tenantAppService;
+
+        private readonly UserSemesterActions _userSemesterActions;
+
         public Command<TenantDto> TenantChanged { get; }
 
         public ObservableCollection<TenantDto> Tenants { get; set; }
@@ -50,6 +55,8 @@ namespace FaksistentX.Shared.ViewModels
             _page = page;
 
             Tenants = new ObservableCollection<TenantDto>();
+
+            _userSemesterActions = DependencyService.Get<UserSemesterActions>();
         }
 
         public string Username
@@ -76,6 +83,8 @@ namespace FaksistentX.Shared.ViewModels
 
             if (loggedIn)
             {
+                _userSemesterActions.GetCurrentSemester();
+
                 Application.Current.MainPage = new AppShell();
             }
 
@@ -96,6 +105,8 @@ namespace FaksistentX.Shared.ViewModels
 
             if (success)
             {
+                _userSemesterActions.GetCurrentSemester();
+
                 Application.Current.MainPage = new AppShell();
             }
         }

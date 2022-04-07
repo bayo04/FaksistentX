@@ -22,5 +22,15 @@ namespace FaksistentX.Shared.Controllers
         {
             await ChangeView(new EntityDto(Id));
         }
+
+        public async Task WriteCommentPage(string Id, string CommentId)
+        {
+            await ChangeView(new { Id = Id, CommentId = CommentId});
+        }
+
+        public async Task CommentPage(string Id, string CommentId)
+        {
+            await ChangeView(new { Id = Id, CommentId = CommentId });
+        }
     }
 }

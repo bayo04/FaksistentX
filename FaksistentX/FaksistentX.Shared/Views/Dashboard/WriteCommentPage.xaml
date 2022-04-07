@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaksistentX.Shared.Views.Dashboard.WriteCommentPage"
+             xmlns:dxe="http://schemas.devexpress.com/xamarin/2014/forms/editors">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <dxe:ComboBoxEdit LabelText="Test" IsFilterEnabled="True" 
+                ItemsSource="{Binding Tests}"
+                ValueMember="Id" DisplayMember="Name"
+                SelectedValue="{Binding SelectedTestId}"
+                IsVisible="{Binding ShowSelectedTest}"/>
+            
+            <dxe:MultilineEdit LabelText="Content"
+                Text="{Binding Content, Mode=TwoWay}"/>
+            
+            <dxe:SimpleButton VerticalOptions="Center" Text="Save" Command="{Binding SaveCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

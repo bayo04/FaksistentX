@@ -1,4 +1,6 @@
-﻿using FaksistentX.Shared.Controllers;
+﻿using FaksistentX.Shared.Actions;
+using FaksistentX.Shared.Controllers;
+using FaksistentX.Shared.Stores;
 using FaksistentX.Shared.Views;
 using System;
 using System.Linq;
@@ -17,6 +19,14 @@ namespace FaksistentX.Shared
             DevExpress.XamarinForms.Editors.Initializer.Init();
             DevExpress.XamarinForms.CollectionView.Initializer.Init();
             DevExpress.XamarinForms.Navigation.Initializer.Init();
+            DevExpress.XamarinForms.Charts.Initializer.Init();
+
+            DependencyService.Register<Dispatcher>();
+
+            DependencyService.Register<UserSemesterStore>();
+
+            DependencyService.Register<UserSemesterActions>();
+
             InitializeComponent();
 
             MainPage = new LoginPage();

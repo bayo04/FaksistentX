@@ -13,7 +13,7 @@ namespace FaksistentX.Services.Courses.CourseTemplates.Dtos
 
         public string Name { get; set; }
 
-        public Guid CourseId { get; set; }
+        public string CourseId { get; set; }
 
         public bool IsPublic { get; set; }
 

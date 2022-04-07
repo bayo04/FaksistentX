@@ -1,4 +1,5 @@
-﻿using FaksistentX.Services.Courses.CourseTemplates.Dtos;
+﻿using FaksistentX.Services.Comments.Dtos;
+using FaksistentX.Services.Courses.CourseTemplates.Dtos;
 using FaksistentX.Shared.ViewModels.Dashboard;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace FaksistentX.Shared.Views.Dashboard
             string result = await DisplayPromptAsync(model.Name, "Points");
             decimal points = 0;
             decimal.TryParse(result, out points);
-
+            
             viewModel.SetPoints(model.Id, points);
         }
     }

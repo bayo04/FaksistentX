@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaksistentX.Shared.Views.Dashboard.CommentPage"
+             xmlns:dxcv="http://schemas.devexpress.com/xamarin/2014/forms/collectionview"
+             xmlns:dxe="http://schemas.devexpress.com/xamarin/2014/forms/editors"
+             x:Name="Page">
+    <ContentPage.Resources>
+        <Style x:Key="SeparatorStyle" TargetType="BoxView">
+            <Setter Property="BackgroundColor" Value="DarkGray"/>
+            <Setter Property="HeightRequest" Value="1"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BorderColor="#41B3A3" CornerRadius="10" BackgroundColor="#C38D9E" Margin="10">
+                <StackLayout Spacing="0" Margin="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                        <Label Grid.Column="1" FontSize="18" Text="{Binding Comment.UserText}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                        <Label Grid.Column="2" FontSize="14" Text="{Binding Comment.CreationTimeString}" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                    <Label FontSize="18" Text="{Binding Comment.Content}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5,0"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <Label FontSize="14" Text="{Binding Comment.NoOfReplies}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5,0"/>
+
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <dxcv:DXCollectionView ItemsSource="{Binding Comment.Children}" ItemSpacing="15" >
+                            <dxcv:DXCollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Spacing="0" Margin="5" Padding="5,0">
+                                        <StackLayout>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                            </Grid>
+                                            <Label Grid.Column="1" FontSize="18" Text="{Binding CreatorUserUserName}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                            <Label Grid.Column="2" FontSize="14" Text="{Binding CreationTimeString}" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                        </StackLayout>
+                                        <Label FontSize="18" Text="{Binding Content}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5,0"/>
+                                        <BoxView Style="{StaticResource SeparatorStyle}"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </dxcv:DXCollectionView.ItemTemplate>
+                        </dxcv:DXCollectionView>
+                    </StackLayout>
+
+                    <dxe:SimpleButton VerticalOptions="Center" Text="Reply" 
+                                                Command="{Binding BindingContext.ReplyCommentCommand, Source={x:Reference Page} }"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

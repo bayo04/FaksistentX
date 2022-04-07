@@ -25,6 +25,7 @@ namespace FaksistentX.iOS
             global::Xamarin.Forms.Forms.Init();
 
             DevExpress.XamarinForms.Navigation.iOS.Initializer.Init();
+            DevExpress.XamarinForms.Charts.iOS.Initializer.Init();
 
             LoadApplication(new App());
 

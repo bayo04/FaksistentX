@@ -210,6 +210,10 @@
     <Compile Include="Accounts\Dtos\UserDto.cs" />
     <Compile Include="AppConsts.cs" />
     <Compile Include="Base\BaseAppService.cs" />
+    <Compile Include="Comments\CommentAppService.cs" />
+    <Compile Include="Comments\Dtos\CommentDto.cs" />
+    <Compile Include="Comments\Dtos\CommentRequestDto.cs" />
+    <Compile Include="Comments\Dtos\CreateCommentDto.cs" />
     <Compile Include="Courses\CourseAppService.cs" />
     <Compile Include="Courses\CourseTemplates\CourseTemplateAppService.cs" />
     <Compile Include="Courses\CourseTemplates\Dtos\CoursePartitionDto.cs" />

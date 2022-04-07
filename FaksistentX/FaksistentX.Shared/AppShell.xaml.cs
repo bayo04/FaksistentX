@@ -13,17 +13,36 @@ namespace FaksistentX
     public partial class AppShell : Xamarin.Forms.Shell
     {
         private AppShellViewModel viewModel;
+
         public AppShell()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new AppShellViewModel();
-            viewModel.OnAppearing();
+            //BindingContext = viewModel = new AppShellViewModel();
+        }
+
+        protected override void OnNavigated(ShellNavigatedEventArgs args)
+        {
+            base.OnNavigated(args);
+
+            (BindingContext as AppShellViewModel).OnAppearing();
+
+            //viewModel.OnAppearing();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            //(BindingContext as AppShellViewModel).OnAppearing();
+
+            //viewModel.OnAppearing();
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {
-            viewModel.Logout();
+            (BindingContext as AppShellViewModel).Logout();
+            //viewModel.Logout();
         }
     }
 }
