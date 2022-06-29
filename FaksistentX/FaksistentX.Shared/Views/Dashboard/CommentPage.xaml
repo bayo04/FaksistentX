@@ -53,7 +53,7 @@
                         </dxcv:DXCollectionView>
                     </StackLayout>
 
-                    <dxe:SimpleButton VerticalOptions="Center" Text="Reply" 
+                    <dxe:SimpleButton VerticalOptions="Center" Text="Odgovori" 
                                                 Command="{Binding BindingContext.ReplyCommentCommand, Source={x:Reference Page} }"/>
                 </StackLayout>
             </Frame>

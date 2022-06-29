@@ -22,7 +22,7 @@ namespace FaksistentX.Services.Accounts
             _tenantAppService = new TenantAppService();
         }
 
-        public async Task<bool> Login(string username, string password)
+        public async Task<UserDto> Login(string username, string password)
         {
             var tenant = await _tenantAppService.GetSelectedTenant();
             var result = await PostAsync<LoginOutput>("TokenAuth/Authenticate", new LoginInput
@@ -37,14 +37,19 @@ namespace FaksistentX.Services.Accounts
             {
                 await SecureStorage.SetAsync("accessToken", result.Result.AccessToken);
 
-                return true;
+                return (await GetAsync<UserDto>("services/app/User/GetCurrentUser")).Result;
             }
-            return false;
+            return null;
+        }
+
+        public async Task<UserDto> GetCurrentUserAsync()
+        {
+            return (await GetAsync<UserDto>("services/app/User/GetCurrentUser")).Result;
         }
 
         public async Task<bool> Logout()
         {
-            await SqliteDbContext.Instance.GetConnection().Table<UserSemester>().DeleteAsync(x => true);
+            //await SqliteDbContext.Instance.GetConnection().Table<UserSemester>().DeleteAsync(x => true);
             return SecureStorage.Remove("accessToken");
         }
 

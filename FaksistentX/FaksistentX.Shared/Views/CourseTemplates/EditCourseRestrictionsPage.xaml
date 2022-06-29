@@ -40,15 +40,15 @@
                                                         </DataTemplate>
                                                     </dxcv:DXCollectionView.ItemTemplate>
                                                 </dxcv:DXCollectionView>
-                                                <dxe:SimpleButton VerticalOptions="Center" Text="Add new" 
+                                                <dxe:SimpleButton VerticalOptions="Center" Text="Dodaj" 
                                                                   Command="{Binding BindingContext.AddNewTestCommand, Source={x:Reference Page} }" 
                                                                   CommandParameter="{Binding .}"/>
                                             </StackLayout>
                                         </xct:Expander.Header>
 
                                         <StackLayout>
-                                            <dxe:NumericEdit LabelText="Points for pass" Value="{Binding PointsForPass, Mode=TwoWay}" />
-                                            <dxe:NumericEdit LabelText="Points for signature" Value="{Binding PointsForSignature, Mode=TwoWay}" />
+                                            <dxe:NumericEdit LabelText="Bodovi za prolazak" Value="{Binding PointsForPass, Mode=TwoWay}" />
+                                            <dxe:NumericEdit LabelText="Bodovi za potpis" Value="{Binding PointsForSignature, Mode=TwoWay}" />
                                         </StackLayout>
 
                                     </xct:Expander>
@@ -58,7 +58,7 @@
                             </dxcv:SwipeContainer.ItemView>
 
                             <dxcv:SwipeContainer.EndSwipeItems>
-                                <dxcv:SwipeItem Caption="Remove"
+                                <dxcv:SwipeItem Caption="Ukloni"
                                         BackgroundColor="Red"
                                         Command="{Binding Source={x:Reference RestrictionsCollection}, Path=RemoveCommand}" CommandParameter="{Binding .}"/>
                             </dxcv:SwipeContainer.EndSwipeItems>
@@ -66,8 +66,8 @@
                     </DataTemplate>
                 </dxcv:DXCollectionView.ItemTemplate>
             </dxcv:DXCollectionView>
-            <dxe:SimpleButton VerticalOptions="Center" Text="Add new" Command="{Binding AddNewCommand}"/>
-            <dxe:SimpleButton VerticalOptions="Center" Text="Save and continue on restrictions" Command="{Binding SaveAndContinueCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Dodaj novi" Command="{Binding AddNewCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Spremi" Command="{Binding SaveAndContinueCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

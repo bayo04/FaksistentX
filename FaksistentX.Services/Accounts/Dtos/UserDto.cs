@@ -13,5 +13,7 @@ namespace FaksistentX.Services.Accounts.Dtos
         public string Surname { get; set; }
 
         public string UserName { get; set; }
+
+        public List<string> RoleNames { get; set; }
     }
 }

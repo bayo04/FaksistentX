@@ -28,16 +28,16 @@
                                     <xct:Expander>
                                         <xct:Expander.Header>
                                             <StackLayout Padding="0,0,50,0">
-                                                <dxe:TextEdit LabelText="Name" Text="{Binding Name, Mode=TwoWay}" />
+                                                <dxe:TextEdit LabelText="Naziv" Text="{Binding Name, Mode=TwoWay}" />
                                             </StackLayout>
                                         </xct:Expander.Header>
 
                                         <StackLayout>
-                                            <dxe:TextEdit LabelText="Code" Text="{Binding Code, Mode=TwoWay}" />
+                                            <dxe:TextEdit LabelText="Kod" Text="{Binding Code, Mode=TwoWay}" />
 
-                                            <dxe:NumericEdit LabelText="Total points" Value="{Binding TotalPoints, Mode=TwoWay}" />
-                                            <dxe:NumericEdit LabelText="Points for pass" Value="{Binding PointsForPass, Mode=TwoWay}" />
-                                            <dxe:NumericEdit LabelText="Points for signature" Value="{Binding PointsForSignature, Mode=TwoWay}" />
+                                            <dxe:NumericEdit LabelText="Ukupno bodova" Value="{Binding TotalPoints, Mode=TwoWay}" />
+                                            <dxe:NumericEdit LabelText="Bodovi za prolazak" Value="{Binding PointsForPass, Mode=TwoWay}" />
+                                            <dxe:NumericEdit LabelText="Bodovi za potpis" Value="{Binding PointsForSignature, Mode=TwoWay}" />
                                         </StackLayout>
 
                                     </xct:Expander>
@@ -47,7 +47,7 @@
                             </dxcv:SwipeContainer.ItemView>
 
                             <dxcv:SwipeContainer.EndSwipeItems>
-                                <dxcv:SwipeItem Caption="Remove"
+                                <dxcv:SwipeItem Caption="Ukloni"
                                         BackgroundColor="Red"
                                         Command="{Binding Source={x:Reference TestsCollection}, Path=RemoveCommand}" CommandParameter="{Binding .}"/>
                             </dxcv:SwipeContainer.EndSwipeItems>
@@ -55,8 +55,9 @@
                     </DataTemplate>
                 </dxcv:DXCollectionView.ItemTemplate>
             </dxcv:DXCollectionView>
-            <dxe:SimpleButton VerticalOptions="Center" Text="Add new" Command="{Binding AddNewCommand}"/>
-            <dxe:SimpleButton VerticalOptions="Center" Text="Save and continue on restrictions" Command="{Binding SaveAndContinueCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Dodaj" Command="{Binding AddNewCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Spremi i vrati se" Command="{Binding SaveAndContinueCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Spremi i nastavi na ograničenja" Command="{Binding SaveAndContinueCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

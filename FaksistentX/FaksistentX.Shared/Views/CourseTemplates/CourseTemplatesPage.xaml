@@ -17,12 +17,12 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add new" Command="{Binding AddNewCommand}" />
+        <ToolbarItem Text="Dodaj novi" Command="{Binding AddNewCommand}" />
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
         <dxn:TabView HeaderPanelPosition="Bottom" SwipeEnabled="False">
-            <dxn:TabViewItem HeaderText="All templates">
+            <dxn:TabViewItem HeaderText="Javni predlošci">
                 <dxn:TabViewItem.Content>
                     <StackLayout>
                         <dxcv:DXCollectionView ItemsSource="{Binding Templates}">
@@ -46,7 +46,7 @@
                                         </dxcv:SwipeContainer.ItemView>
 
                                         <dxcv:SwipeContainer.StartSwipeItems>
-                                            <dxcv:SwipeItem Caption="Use"
+                                            <dxcv:SwipeItem Caption="Kopiraj"
                                                 BackgroundColor="Green"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:CourseTemplatesViewModel}}, Path=UseCommand}"/>
                                         </dxcv:SwipeContainer.StartSwipeItems>
@@ -58,7 +58,7 @@
                 </dxn:TabViewItem.Content>
             </dxn:TabViewItem>
             
-            <dxn:TabViewItem HeaderText="My templates">
+            <dxn:TabViewItem HeaderText="Moji predlošci">
                 <dxn:TabViewItem.Content>
                     <StackLayout>
                         <dxcv:DXCollectionView ItemsSource="{Binding MyTemplates}">
@@ -82,10 +82,10 @@
                                         </dxcv:SwipeContainer.ItemView>
 
                                         <dxcv:SwipeContainer.StartSwipeItems>
-                                            <dxcv:SwipeItem Caption="Edit"
+                                            <dxcv:SwipeItem Caption="Uredi"
                                                 BackgroundColor="Blue"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:CourseTemplatesViewModel}}, Path=EditCommand}"/>
-                                            <dxcv:SwipeItem Caption="Set"
+                                            <dxcv:SwipeItem Caption="Koristi"
                                                 BackgroundColor="Green"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:CourseTemplatesViewModel}}, Path=SetCommand}"/>
                                         </dxcv:SwipeContainer.StartSwipeItems>

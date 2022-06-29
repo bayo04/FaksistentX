@@ -80,11 +80,11 @@ namespace FaksistentX.Shared.ViewModels.Dashboard
 
                     if(test.MyPoints < test.PointsForPass)
                     {
-                        FailedTestsPass += (FailedTestsPass.Length == 0 ? "You can't pass because of: " : ", ") + test.Name;
+                        FailedTestsPass += (FailedTestsPass.Length == 0 ? "Nezadovoljen uvjet za prolazak: " : ", ") + test.Name;
                     }
                     if(test.MyPoints < test.PointsForSignature)
                     {
-                        FailedTestsSignature += (FailedTestsSignature.Length == 0 ? "You can't get signature because of: " : ", ") + test.Name;
+                        FailedTestsSignature += (FailedTestsSignature.Length == 0 ? "Nezadovoljen uvjet za potpis: " : ", ") + test.Name;
                     }
                 }
                 Tests.Add(test);
@@ -109,11 +109,11 @@ namespace FaksistentX.Shared.ViewModels.Dashboard
                 }
                 if (show && total < restriction.PointsForPass)
                 {
-                    FailedTestsPass += (FailedTestsPass.Length == 0 ? "You can't pass because of: " : ", ") + testStrings;
+                    FailedTestsPass += (FailedTestsPass.Length == 0 ? "Nezadovoljen uvjet za prolazak: " : ", ") + testStrings;
                 }
                 if (show && total < restriction.PointsForSignature)
                 {
-                    FailedTestsSignature += (FailedTestsSignature.Length == 0 ? "You can't get signature because of: " : ", ") + testStrings;
+                    FailedTestsSignature += (FailedTestsSignature.Length == 0 ? "Nezadovoljen uvjet za potpis: " : ", ") + testStrings;
                 }
             }
 
@@ -133,6 +133,8 @@ namespace FaksistentX.Shared.ViewModels.Dashboard
         public async void SetPoints(string testId, decimal points)
         {
             await _semesterCourseAppService.SetPoints(new SetPointsDto { CourseTestId = testId, Points = points, SemesterCourseId = Id });
+
+            OnAppearing();
         }
 
         private async void OnWriteCommentCommand()

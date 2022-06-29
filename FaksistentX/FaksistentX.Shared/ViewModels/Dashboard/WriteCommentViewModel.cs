@@ -65,7 +65,7 @@ namespace FaksistentX.Shared.ViewModels.Dashboard
 
             Template = await _courseTemplateAppService.GetAsync(Id);
             Tests.Clear();
-            Tests.Add(new CourseTestDto { Id = "All", Name = "No test selected" });
+            Tests.Add(new CourseTestDto { Id = "All", Name = "Nije odabran test" });
             Tests.AddRange(Template.CourseTests);
             SelectedTestId = "All";
 

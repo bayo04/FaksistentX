@@ -100,7 +100,7 @@ namespace FaksistentX.Shared.ViewModels.Account
             }
 
             _selectedTenant = await _tenantAppService.GetSelectedTenant();
-            ChangeTenantText = _selectedTenant == null ? "Tenant not selected, click here" : _selectedTenant.TenancyName + " - Click to change";
+            ChangeTenantText = _selectedTenant == null ? "Studij nije odabran, klikni ovdje" : _selectedTenant.TenancyName + " - klikni za promjenu";
         }
 
         private async void OnRegisterClicked(object obj)
@@ -124,7 +124,7 @@ namespace FaksistentX.Shared.ViewModels.Account
         {
             await _tenantAppService.SelectTenant(tenant.Id);
             _selectedTenant = tenant;
-            ChangeTenantText = _selectedTenant == null ? "Tenant not selected, click here" : _selectedTenant.TenancyName + " - Click to change";
+            ChangeTenantText = _selectedTenant == null ? "Studij nije odabran, klikni ovdje" : _selectedTenant.TenancyName + " - klikni za promjenu";
 
             _page.ExitPopup();
         }

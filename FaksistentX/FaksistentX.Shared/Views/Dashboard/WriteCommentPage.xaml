@@ -11,10 +11,10 @@
                 SelectedValue="{Binding SelectedTestId}"
                 IsVisible="{Binding ShowSelectedTest}"/>
             
-            <dxe:MultilineEdit LabelText="Content"
+            <dxe:MultilineEdit LabelText="Sadržaj komentara"
                 Text="{Binding Content, Mode=TwoWay}"/>
             
-            <dxe:SimpleButton VerticalOptions="Center" Text="Save" Command="{Binding SaveCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Spremi" Command="{Binding SaveCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

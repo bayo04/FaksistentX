@@ -28,6 +28,11 @@ namespace FaksistentX.Shared.Controllers
             }
         }
 
+        public async Task SelectCoursesPage(string Id)
+        {
+            await ChangeView(new EntityDto(Id));
+        }
+
         public async Task<bool> DeleteUserSemester(string id)
         {
             return await _userSemesterAppService.DeleteAsync(id);
@@ -36,11 +41,6 @@ namespace FaksistentX.Shared.Controllers
         public async Task<bool> SetIsSelected(string id)
         {
             return await _userSemesterAppService.SetIsSelectedAsync(id);
-        }
-
-        public async Task SelectCoursesPage(string Id)
-        {
-            await ChangeView(new EntityDto(Id));
         }
     }
 }

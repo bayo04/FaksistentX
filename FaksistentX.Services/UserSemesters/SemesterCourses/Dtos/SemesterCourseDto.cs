@@ -26,6 +26,6 @@ namespace FaksistentX.Services.UserSemesters.SemesterCourses.Dtos
 
         public List<SemesterCourseTestDto> SemesterCourseTests { get; set; }
 
-        public string Title => Course.Name + " - " + (CourseTemplate != null ? CourseTemplate.Name : "No template selected");
+        public string Title => Course.Name + " - " + (CourseTemplate != null ? CourseTemplate.Name : "Predložak nije odabran");
     }
 }

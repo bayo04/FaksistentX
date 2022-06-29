@@ -18,11 +18,26 @@ namespace FaksistentX.Shared.ViewModels
             get => _semesterItem;
             set => SetProperty(ref _semesterItem, value);
         }
+        private string _logoutItem;
+
+        public string LogoutItem
+        {
+            get => _logoutItem;
+            set => SetProperty(ref _logoutItem, value);
+        }
+        private bool _showCourses;
+
+        public bool ShowCourses
+        {
+            get => _showCourses;
+            set => SetProperty(ref _showCourses, value);
+        }
 
         private UserSemesterAppService _userSemesterAppService;
         private AccountAppService _accountAppService;
 
         private UserSemesterStore _userSemesterStore;
+        private UserStore _userStore;
 
         public AppShellViewModel()
         {
@@ -30,15 +45,19 @@ namespace FaksistentX.Shared.ViewModels
             _accountAppService = new AccountAppService();
 
             _userSemesterStore = DependencyService.Get<UserSemesterStore>();
+            _userStore = DependencyService.Get<UserStore>();
 
-            SemesterItem = "Semesters (" + (_userSemesterStore.Data?.Name ?? "None selected") + ")";
+            SemesterItem = "Semestri (" + (_userSemesterStore.Data?.Name ?? "Nije odabrano") + ")";
+            LogoutItem = "Odjava (" + (_userStore.Data?.UserName ?? "Nije odabrano") + ")";
+            ShowCourses = _userStore.CheckIfAdmin();
         }
 
         public async void OnAppearing()
         {
             IsBusy = true;
 
-            SemesterItem = "Semesters (" + (_userSemesterStore.Data?.Name ?? "None selected") + ")";
+            SemesterItem = "Semestri (" + (_userSemesterStore.Data?.Name ?? "Nije odabrano") + ")";
+            LogoutItem = "Odjava (" + (_userStore.Data?.UserName ?? "Nije odabrano") + ")";
 
             IsBusy = false;
         }

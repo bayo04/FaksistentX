@@ -15,7 +15,7 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Command="{Binding SaveCommand}" />
+        <ToolbarItem Text="Spremi" Command="{Binding SaveCommand}" />
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
@@ -32,13 +32,13 @@
                             </dxcv:SwipeContainer.ItemView>
 
                             <dxcv:SwipeContainer.StartSwipeItems>
-                                <dxcv:SwipeItem Caption="Add"
+                                <dxcv:SwipeItem Caption="Dodaj"
                                         BackgroundColor="Green"
                                         Invoked="SwipeItem_Invoked"/>
                             </dxcv:SwipeContainer.StartSwipeItems>
 
                             <dxcv:SwipeContainer.EndSwipeItems>
-                                <dxcv:SwipeItem Caption="Remove"
+                                <dxcv:SwipeItem Caption="Ukloni"
                                         BackgroundColor="Red"
                                         Image="deletetask"
                                         Invoked="SwipeItem_Invoked_1"/>

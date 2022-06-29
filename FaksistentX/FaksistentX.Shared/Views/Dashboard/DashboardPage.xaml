@@ -7,14 +7,14 @@
              x:Name="Page">
     <ContentPage.Content>
         <StackLayout Padding="10">
-            <dxcv:DXCollectionView ItemsSource="{Binding Courses}" x:Name="CourseCollectionView" Orientation="Horizontal" HeightRequest="300">
+            <dxcv:DXCollectionView ItemsSource="{Binding Courses}" x:Name="CourseCollectionView" Orientation="Vertical">
                 <dxcv:DXCollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="#41B3A3" CornerRadius="10" BackgroundColor="#C38D9E" Margin="5">
                             <StackLayout Spacing="0" Margin="5">
                                 <Label Margin="20" FontSize="16" FontAttributes="Bold" Text="{Binding Title}"/>
 
-                                <dxe:SimpleButton VerticalOptions="Center" Text="Details" 
+                                <dxe:SimpleButton VerticalOptions="Center" Text="Detalji" 
                                                   Command="{Binding BindingContext.CourseDetailsCommand, Source={x:Reference Page}}"
                                                   CommandParameter="{Binding .}"/>
                             </StackLayout>

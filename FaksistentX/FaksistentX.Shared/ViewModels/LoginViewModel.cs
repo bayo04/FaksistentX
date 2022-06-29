@@ -34,6 +34,7 @@ namespace FaksistentX.Shared.ViewModels
         private readonly TenantAppService _tenantAppService;
 
         private readonly UserSemesterActions _userSemesterActions;
+        private readonly UserActions _userActions;
 
         public Command<TenantDto> TenantChanged { get; }
 
@@ -57,6 +58,7 @@ namespace FaksistentX.Shared.ViewModels
             Tenants = new ObservableCollection<TenantDto>();
 
             _userSemesterActions = DependencyService.Get<UserSemesterActions>();
+            _userActions = DependencyService.Get<UserActions>();
         }
 
         public string Username
@@ -85,6 +87,8 @@ namespace FaksistentX.Shared.ViewModels
             {
                 _userSemesterActions.GetCurrentSemester();
 
+                _userActions.GetUser();
+
                 Application.Current.MainPage = new AppShell();
             }
 
@@ -96,16 +100,18 @@ namespace FaksistentX.Shared.ViewModels
             }
 
             _selectedTenant = await _tenantAppService.GetSelectedTenant();
-            ChangeTenantText = _selectedTenant == null ? "Tenant not selected, click here" : _selectedTenant.TenancyName + " - Click to change";
+            ChangeTenantText = _selectedTenant == null ? "Studij nije odabran, klikni ovdje" : _selectedTenant.TenancyName + " - klikni za promjenu";
         }
 
         private async void OnLoginClicked(object obj)
         {
-            var success = await _accountAppService.Login(Username, Password);
+            var user = await _accountAppService.Login(Username, Password);
 
-            if (success)
+            if (user != null)
             {
                 _userSemesterActions.GetCurrentSemester();
+
+                _userActions.SetUser(user);
 
                 Application.Current.MainPage = new AppShell();
             }

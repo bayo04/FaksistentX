@@ -24,8 +24,10 @@ namespace FaksistentX.Shared
             DependencyService.Register<Dispatcher>();
 
             DependencyService.Register<UserSemesterStore>();
+            DependencyService.Register<UserStore>();
 
             DependencyService.Register<UserSemesterActions>();
+            DependencyService.Register<UserActions>();
 
             InitializeComponent();
 

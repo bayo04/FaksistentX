@@ -45,10 +45,10 @@
                 </StackLayout>
             </dxp:DXPopup>
             
-            <dxe:TextEdit LabelText="Username" Text="{Binding Username}"/>
-            <dxe:PasswordEdit LabelText="Password" Text="{Binding Password}"/>
-            <dxe:SimpleButton VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-            <dxe:SimpleButton VerticalOptions="Center" Text="Register" Command="{Binding OnRegisterCommand}" />
+            <dxe:TextEdit LabelText="Korisničko ime" Text="{Binding Username}"/>
+            <dxe:PasswordEdit LabelText="Lozinka" Text="{Binding Password}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Prijava" Command="{Binding LoginCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Registracija" Command="{Binding OnRegisterCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

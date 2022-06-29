@@ -18,12 +18,12 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Write new comment" Command="{Binding WriteCommentCommand}" />
+        <ToolbarItem Text="Napiši novi komentar" Command="{Binding WriteCommentCommand}" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <dxn:TabView HeaderPanelPosition="Bottom" SwipeEnabled="False">
-            <dxn:TabViewItem HeaderText="Tests">
+            <dxn:TabViewItem HeaderText="Testovi">
                 <dxn:TabViewItem.Content>
                     <StackLayout>
                         <Frame BorderColor="#41B3A3" CornerRadius="10" BackgroundColor="#C38D9E" Margin="10">
@@ -46,7 +46,7 @@
                                         </DataTemplate>
                                     </dxcv:DXCollectionView.ItemTemplate>
                                 </dxcv:DXCollectionView>
-                                <Label Text="Total points: " TextColor="Black" />
+                                <Label Text="Ukupni bodovi: " TextColor="Black" />
                                 <Label Text="{Binding TotalPoints}" TextColor="Black" />
                                 <Label Text="{Binding FailedTestsPass}" TextColor="Black" />
                                 <Label Text="{Binding FailedTestsSignature}" TextColor="Black" />
@@ -56,7 +56,7 @@
                 </dxn:TabViewItem.Content>
             </dxn:TabViewItem>
 
-            <dxn:TabViewItem HeaderText="Comments">
+            <dxn:TabViewItem HeaderText="Komentari">
                 <dxn:TabViewItem.Content>
                     <StackLayout>
                         <dxcv:DXCollectionView ItemsSource="{Binding Comments}">
@@ -78,12 +78,12 @@
                                             <Label FontSize="14" Text="{Binding NoOfReplies}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5,0"/>
 
 
-                                            <dxe:SimpleButton VerticalOptions="Center" Text="View more" 
+                                            <dxe:SimpleButton VerticalOptions="Center" Text="Detalji" 
                                                 Command="{Binding BindingContext.CommentCommand, Source={x:Reference Page} }" 
                                                 CommandParameter="{Binding .}"
                                                 Margin="5"/>
 
-                                            <dxe:SimpleButton VerticalOptions="Center" Text="Reply" 
+                                            <dxe:SimpleButton VerticalOptions="Center" Text="Odgovori" 
                                                 Command="{Binding BindingContext.ReplyCommentCommand, Source={x:Reference Page} }" 
                                                 CommandParameter="{Binding .}"
                                                 Margin="5"/>

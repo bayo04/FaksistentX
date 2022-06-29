@@ -22,12 +22,12 @@ namespace FaksistentX.Services.Comments.Dtos
 
         public string CreatorUserUserName { get; set; }
 
-        public string UserText => CreatorUserUserName + (!string.IsNullOrEmpty(Tag) ? " on " + Tag : "");
+        public string UserText => CreatorUserUserName + (!string.IsNullOrEmpty(Tag) ? " za " + Tag : "");
 
         public string CreationTimeString => CreationTime.ToString("HH:mm dd.MM.yyyy");
 
         public List<CommentDto> Children { get; set; }
 
-        public string NoOfReplies => Children.Count.ToString() + " replies";
+        public string NoOfReplies => Children.Count.ToString() + " odgovora";
     }
 }

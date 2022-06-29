@@ -82,7 +82,6 @@ namespace FaksistentX.Shared.ViewModels.UserSemesters
                 StartDate = semester.StartDate;
                 EndDate = semester.EndDate;
             }
-
         }
 
         private async Task<UserSemesterDto> Save()

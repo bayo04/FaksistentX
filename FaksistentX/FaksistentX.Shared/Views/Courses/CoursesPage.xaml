@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FaksistentX.Shared.Views.UserSemesters.UserSemestersPage"
-             xmlns:local="clr-namespace:FaksistentX.Shared.ViewModels.UserSemesters"
-             xmlns:dxcv="http://schemas.devexpress.com/xamarin/2014/forms/collectionview">
+             x:Class="FaksistentX.Shared.Views.Courses.CoursesPage"
+             xmlns:dxcv="http://schemas.devexpress.com/xamarin/2014/forms/collectionview"
+             x:Name="Page">
     <ContentPage.Resources>
         <Style TargetType="dxcv:SwipeItem">
             <Setter Property="FontColor" Value="White"/>
@@ -16,37 +16,27 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Dodaj novi" Command="{Binding AddSemesterCommand}" />
+        <ToolbarItem Text="Dodaj novi" Command="{Binding AddCourseCommand}" />
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
         <StackLayout>
-            <dxcv:DXCollectionView ItemsSource="{Binding UserSemesters}" x:Name="SemesterCollectionView">
+            <dxcv:DXCollectionView ItemsSource="{Binding Courses}" x:Name="CoursesCollectionView">
                 <dxcv:DXCollectionView.ItemTemplate>
                     <DataTemplate>
                         <dxcv:SwipeContainer>
                             <dxcv:SwipeContainer.ItemView>
-                                <StackLayout Margin="0" Spacing="0" BackgroundColor="{Binding Color}">
+                                <StackLayout Margin="0" Spacing="0">
                                     <Label Margin="20" Text="{Binding Name}"/>
                                     <BoxView Style="{StaticResource SeparatorStyle}"/>
                                 </StackLayout>
                             </dxcv:SwipeContainer.ItemView>
 
                             <dxcv:SwipeContainer.StartSwipeItems>
-                                <dxcv:SwipeItem Caption="Postavi"
-                                        BackgroundColor="Green"
-                                        Invoked="SwipeItem_Invoked_1"/>
                                 <dxcv:SwipeItem Caption="Uredi"
                                         BackgroundColor="Blue"
-                                        Invoked="SwipeItem_Invoked_2"/>
-                            </dxcv:SwipeContainer.StartSwipeItems>
-
-                            <dxcv:SwipeContainer.EndSwipeItems>
-                                <dxcv:SwipeItem Caption="Obriši"
-                                        BackgroundColor="Red"
-                                        Image="deletetask"
                                         Invoked="SwipeItem_Invoked"/>
-                            </dxcv:SwipeContainer.EndSwipeItems>
+                            </dxcv:SwipeContainer.StartSwipeItems>
                         </dxcv:SwipeContainer>
                     </DataTemplate>
                 </dxcv:DXCollectionView.ItemTemplate>

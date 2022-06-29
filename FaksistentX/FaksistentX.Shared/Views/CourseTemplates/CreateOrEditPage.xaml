@@ -5,15 +5,15 @@
              xmlns:dxe="http://schemas.devexpress.com/xamarin/2014/forms/editors">
     <ContentPage.Content>
         <StackLayout Padding="10,20">
-            <dxe:ComboBoxEdit LabelText="Course" IsFilterEnabled="True" ItemsSource="{Binding Courses}" ValueMember="Id" DisplayMember="Name" 
+            <dxe:ComboBoxEdit LabelText="Predmet" IsFilterEnabled="True" ItemsSource="{Binding Courses}" ValueMember="Id" DisplayMember="Name" 
                               SelectedValue="{Binding CourseId}" />
-            <dxe:TextEdit LabelText="Name" Text="{Binding Name, Mode=TwoWay}" />
+            <dxe:TextEdit LabelText="Naziv" Text="{Binding Name, Mode=TwoWay}" />
             <StackLayout Orientation="Horizontal" Margin="10">
                 <dxe:CheckEdit IsChecked="{Binding IsPublic, Mode=TwoWay}" Scale="1.25" />
-                <Label Text="Is public" VerticalTextAlignment="Center" FontSize="16" />
+                <Label Text="Javni predložak" VerticalTextAlignment="Center" FontSize="16" />
             </StackLayout>
-            <dxe:SimpleButton VerticalOptions="Center" Text="Save and return" Command="{Binding SaveCommand}"/>
-            <dxe:SimpleButton VerticalOptions="Center" Text="Save and continue on partitions" Command="{Binding SaveAndContinueCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Spremi i vrati se" Command="{Binding SaveCommand}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Spremi i nastavi na testove" Command="{Binding SaveAndContinueCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

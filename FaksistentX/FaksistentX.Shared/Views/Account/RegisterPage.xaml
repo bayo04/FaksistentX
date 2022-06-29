@@ -41,13 +41,14 @@
                 </StackLayout>
             </dxp:DXPopup>
             
-            <dxe:TextEdit LabelText="Username" Text="{Binding Username}"/>
-            <dxe:TextEdit LabelText="FirstName" Text="{Binding FirstName}"/>
-            <dxe:TextEdit LabelText="LastName" Text="{Binding LastName}"/>
+            <dxe:TextEdit LabelText="Korisničko ime" Text="{Binding Username}"/>
+            <dxe:TextEdit LabelText="Ime" Text="{Binding FirstName}"/>
+            <dxe:TextEdit LabelText="Prezime" Text="{Binding LastName}"/>
             <dxe:TextEdit LabelText="Email" Text="{Binding Email}"/>
-            <dxe:PasswordEdit LabelText="Password" Text="{Binding Password}"/>
-            <dxe:PasswordEdit LabelText="Confirm Password" Text="{Binding PasswordConfirmed}"/>
-            <dxe:SimpleButton VerticalOptions="Center" Text="Register" Command="{Binding RegisterCommand}" />
+            <dxe:PasswordEdit LabelText="Lozinka" Text="{Binding Password}"/>
+            <dxe:PasswordEdit LabelText="Ponovljena lozinka" Text="{Binding PasswordConfirmed}"/>
+            <dxe:SimpleButton VerticalOptions="Center" Text="Registriraj se" Command="{Binding RegisterCommand}" />
+            <dxe:SimpleButton VerticalOptions="Center" Text="Prijava" Command="{Binding RegisterCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
